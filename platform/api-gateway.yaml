@@ -1,8 +1,6 @@
 spring:
-
   cloud:
     gateway:
-     webflux:
       routes:
         - id: user-service
           uri: lb://USER-SERVICE
@@ -26,10 +24,13 @@ spring:
         cors-configurations:
           '[/**]':
             allowedOrigins: "*"
-            allowed-methods: "*"
-            allowed-headers: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
 
 server:
   port: 7000
 
-
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
