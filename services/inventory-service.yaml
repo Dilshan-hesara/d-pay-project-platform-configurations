@@ -4,12 +4,9 @@ spring:
       enabled: true
   
   mongodb:
-    host: localhost
-    port: 13500
-    username: root
-    password: mongodb
-    database: d_pay_inventory_db
-    authentication-database: admin
+    uri: mongodb://root:8_Ex2GVaeBolA3xIvM-8bIihqPRaFEKQV6rz01S4idAIWNL3@d016eab6-7f4a-41f7-a162-fc7df82ba267.asia-southeast1.firestore.goog:443/db-capstone?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false
+
+
 
 
 server:
