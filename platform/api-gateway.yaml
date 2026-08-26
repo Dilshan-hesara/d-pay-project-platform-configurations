@@ -1,37 +1,34 @@
 spring:
-
   cloud:
     gateway:
-      server:
-        webflux:
-          routes:
-            - id: user-service
-              uri: lb://USER-SERVICE
-              predicates:
-                - Path=/api/v1/users/**
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/**
 
-            - id: inventory-service
-              uri: lb://INVENTORY-SERVICE
-              predicates:
-                - Path=/api/v1/inventory/**
+        - id: inventory-service
+          uri: lb://INVENTORY-SERVICE
+          predicates:
+            - Path=/api/v1/inventory/**
 
-            - id: order-service
-              uri: lb://ORDER-SERVICE
-              predicates:
-                - Path=/api/v1/orders/**
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/orders/**
 
-          default-filters:
-            - PreserveHostHeader
+      default-filters:
+        - PreserveHostHeader
 
-          globalcors:
-            cors-configurations:
-              '[/**]':
-                allowedOrigins: "*"
-                allowed-methods: "*"
-                allowed-headers: "*"
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
 server:
   port: 7000
-
 
 eureka:
   instance:
