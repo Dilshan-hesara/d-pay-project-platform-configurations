@@ -13,6 +13,6 @@ management:
 
 logging:
   level:
-    lk.dilshan.hesara.eca: DEBUG
+    lk.dilshan.hesara.d_pay: DEBUG
     org.springframework.web: INFO
     org.hibernate.SQL: DEBUG
