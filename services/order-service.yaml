@@ -19,14 +19,17 @@ spring:
         format_sql: true
 
 server:
-  port: 8002
+  port: 0
   forward-headers-strategy: framework
+
 
 
 eureka:
   instance:
     prefer-ip-address: true
     hostname: localhost
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
 
 # ── Inventory Service URL ────────────────────────────────────────────────────
 # Routes through the API Gateway (port 7000) so the Order Service never
