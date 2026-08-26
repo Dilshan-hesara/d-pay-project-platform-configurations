@@ -29,6 +29,9 @@ spring:
 
 server:
   port: 7000
+  servlet:
+    session:
+      persistent: false
 
 eureka:
   instance:
