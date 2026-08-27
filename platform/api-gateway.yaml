@@ -1,32 +1,44 @@
 spring:
   cloud:
     gateway:
-      routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/v1/users/**
+      server:
+        webflux:
+          routes:
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/api/v1/users/**
 
-        - id: inventory-service
-          uri: lb://INVENTORY-SERVICE
-          predicates:
-            - Path=/api/v1/inventory/**
+            - id: inventory-service
+              uri: lb://INVENTORY-SERVICE
+              predicates:
+                - Path=/api/v1/inventory/**
 
-        - id: order-service
-          uri: lb://ORDER-SERVICE
-          predicates:
-            - Path=/api/v1/orders/**
+            - id: order-service
+              uri: lb://ORDER-SERVICE
+              predicates:
+                - Path=/api/v1/orders/**
 
-      default-filters:
-        - PreserveHostHeader
+          default-filters:
+            - PreserveHostHeader
 
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-            allowedHeaders: "*"
+          globalcors:
+            add-to-simple-url-handler-mapping: true
+            cors-configurations:
+              '[/**]':
+                allowedOriginPatterns:
+                  - "*"
+                allowedMethods:
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - PATCH
+                  - OPTIONS
+                allowedHeaders:
+                  - "*"
+                allowCredentials: false
+                maxAge: 3600
 
 server:
   port: 7000
-
